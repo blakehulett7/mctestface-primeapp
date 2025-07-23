@@ -3,6 +3,7 @@ package main
 import (
 	"io"
 	"os"
+	"strings"
 	"testing"
 )
 
@@ -62,5 +63,9 @@ func TestIntro(t *testing.T) {
 	os.Stdout = old_out
 
 	printed, _ := io.ReadAll(read_pipe)
+
+	if !strings.Contains(string(printed), "Enter a whole number") {
+		t.Errorf("intro text not correct, got %s but expected it contain 'Enter a whole number'", string(printed))
+	}
 
 }
