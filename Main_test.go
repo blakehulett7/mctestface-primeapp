@@ -9,7 +9,7 @@ import (
 	"testing"
 )
 
-func TestAlphaIsPrime(t *testing.T) {
+func Test_Alpha_IsPrime(t *testing.T) {
 	prime_test := []struct {
 		Name     string
 		TestNum  int
@@ -37,7 +37,7 @@ func TestAlphaIsPrime(t *testing.T) {
 
 }
 
-func TestAlphaPrompt(t *testing.T) {
+func Test_Alpha_Prompt(t *testing.T) {
 	// This is a demonstration for how to test output printed to the terminal
 	old_out := os.Stdout
 	read_pipe, write_pipe, _ := os.Pipe()
