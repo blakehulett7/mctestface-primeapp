@@ -72,12 +72,16 @@ func TestIntro(t *testing.T) {
 }
 
 func TestCheckNumbers(t *testing.T) {
+	// This is a demonstration for how to test user input
 	tests := []struct {
 		Name        string
 		Input       string
 		ExpectedMsg string
 	}{
+		{"Quit", "q", ""},
 		{"Empty", "", "Please enter a whole number"},
+		{"Word", "Seven", "Please enter a whole number"},
+		{"Decimal", "1.7", "Please enter a whole number"},
 		{"Negative", "-1", "-1 is a negative number. Therefore, it is not prime!"},
 		{"Definition", "0", "0 is not prime, by definition!"},
 		{"NotPrime", "4", "4 is not a prime number, it is divisible by 2!"},
