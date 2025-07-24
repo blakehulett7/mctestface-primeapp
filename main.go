@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"os"
 	"strconv"
 	"strings"
@@ -14,7 +15,7 @@ func main() {
 	// Make a channel to listen for the quit signal
 	done_chan := make(chan bool)
 
-	go ReadUserInput(done_chan)
+	go ReadUserInput(os.Stdin, done_chan)
 	<-done_chan
 	close(done_chan)
 
@@ -32,8 +33,8 @@ func Prompt() {
 	fmt.Print("-> ")
 }
 
-func ReadUserInput(done_chan chan bool) {
-	scanner := bufio.NewScanner(os.Stdin)
+func ReadUserInput(in io.Reader, done_chan chan bool) {
+	scanner := bufio.NewScanner(in)
 
 	for {
 		res, done := CheckNumbers(scanner)
